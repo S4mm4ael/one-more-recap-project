@@ -1,32 +1,31 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <h1>My notes</h1>
+    <div class="notes">
+      <NoteItem
+        v-for="note in notes"
+        :key="note.id"
+        :title="note.title"
+        :describe="note.describe"
+        :date="note.date"
+      />
+    </div>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import {mockedNotes} from "./data/notes";
+import NoteItem from "./components/Note/NoteItem.vue";
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+export default {
+  name: "App",
+  components: {
+    NoteItem,
+  },
+  data() {
+    return {
+      notes: mockedNotes,
+    };
+  },
+};
+</script>
