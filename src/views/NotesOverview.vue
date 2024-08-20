@@ -1,7 +1,7 @@
 <template>
   <div class="notes">
     <h1>Notes</h1>
-    <NewNote />
+    <NewNote :addNewNote="addNewNote" />
     <NoteItem
       v-for="note in notes"
       :key="note.id"
@@ -27,6 +27,16 @@ export default {
     return {
       notes: mockedNotes,
     };
+  },
+  methods: {
+    addNewNote(title, describe) {
+      this.notes.push({
+        id: this.notes.length + 1,
+        title: title ?? "New Note",
+        describe: describe ?? "Description",
+        date: new Date().toLocaleDateString(),
+      });
+    },
   },
 };
 </script>
