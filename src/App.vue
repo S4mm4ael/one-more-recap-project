@@ -1,31 +1,19 @@
 <template>
-  <div id="app">
-    <h1>My notes</h1>
-    <div class="notes">
-      <NoteItem
-        v-for="note in notes"
-        :key="note.id"
-        :title="note.title"
-        :describe="note.describe"
-        :date="note.date"
-      />
-    </div>
-  </div>
+  <div id="app"><HeaderMain v-if="showHeader" /> <router-view /></div>
 </template>
 
 <script>
-import {mockedNotes} from "./data/notes";
-import NoteItem from "./components/Note/NoteItem.vue";
+import HeaderMain from "./components/Header/HeaderMain.vue";
 
 export default {
   name: "App",
   components: {
-    NoteItem,
+    HeaderMain,
   },
-  data() {
-    return {
-      notes: mockedNotes,
-    };
+  computed: {
+    showHeader() {
+      return this.$route.name !== "App";
+    },
   },
 };
 </script>
