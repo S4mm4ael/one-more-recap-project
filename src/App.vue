@@ -1,5 +1,16 @@
 <template>
-  <div id="app"><HeaderMain v-if="showHeader" /> <router-view /></div>
+  <div class="wrapper">
+    <div class="wrapper-content">
+      <div id="app">
+        <HeaderMain v-if="showHeader" />
+        <section>
+          <div class="container">
+            <router-view />
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
