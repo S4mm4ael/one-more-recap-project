@@ -3,7 +3,7 @@
     <div class="wrapper-content">
       <div id="app">
         <HeaderMain v-if="showHeader" />
-        <MessageContainer />
+        <MessageContainer message="test" />
         <section>
           <div class="container">
             <router-view />
