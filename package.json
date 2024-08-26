@@ -26,6 +26,7 @@
     "sass": "^1.77.8",
     "sass-embedded": "^1.77.8",
     "sass-loader": "^16.0.1",
+    "vue-svg-loader": "^0.16.0",
     "vue-template-compiler": "^2.6.14",
     "webpack": "^5.94.0"
   }

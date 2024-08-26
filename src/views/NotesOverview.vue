@@ -1,6 +1,10 @@
 <template>
   <div class="notes">
     <NewNote :addNewNote="addNewNote" />
+    <div class="view-buttons-container">
+      <SvgColumns />
+      <SvgGrids />
+    </div>
     <NoteItem
       v-for="note in notes"
       :key="note.id"
@@ -17,12 +21,16 @@
 import {mockedNotes} from "../data/notes";
 import NewNote from "../components/Note/NewNote.vue";
 import NoteItem from "../components/Note/NoteItem.vue";
+import SvgColumns from "../assets/svg/columns.svg";
+import SvgGrids from "../assets/svg/grids.svg";
 
 export default {
   name: "NotesOverview",
   components: {
     NewNote,
     NoteItem,
+    SvgColumns,
+    SvgGrids,
   },
   data() {
     return {
@@ -44,3 +52,22 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.view-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  gap: 10px;
+  margin-left: 90%;
+}
+.view-buttons-container svg:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s;
+}
+.view-buttons-container svg {
+  cursor: pointer;
+}
+</style>
