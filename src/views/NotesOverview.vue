@@ -5,15 +5,17 @@
       <SvgColumns :class="{active: column}" @click="toggleView(true)" />
       <SvgGrids :class="{active: !column}" @click="toggleView(false)" />
     </div>
-    <NoteItem
-      v-for="note in notes"
-      :key="note.id"
-      :id="note.id"
-      :title="note.title"
-      :describe="note.describe"
-      :date="note.date"
-      :remove-note="removeNote"
-    />
+    <div :class="{'grid-view': !column, 'column-view': column}">
+      <NoteItem
+        v-for="note in notes"
+        :key="note.id"
+        :id="note.id"
+        :title="note.title"
+        :describe="note.describe"
+        :date="note.date"
+        :remove-note="removeNote"
+      />
+    </div>
   </div>
 </template>
 
@@ -76,5 +78,16 @@ export default {
 }
 .view-buttons-container svg.active {
   fill: blue;
+}
+.grid-view {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 items in a row */
+  gap: 10px;
+}
+
+.column-view {
+  display: flex;
+  flex-direction: column; /* Items in a single column */
+  gap: 10px;
 }
 </style>

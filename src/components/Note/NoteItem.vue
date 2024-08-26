@@ -62,5 +62,6 @@ export default {
   border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
+  height: 30px;
 }
 </style>
