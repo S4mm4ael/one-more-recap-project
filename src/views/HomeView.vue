@@ -1,6 +1,8 @@
 <template>
   <div id="home">
-    <h1>Home</h1>
+    <div class="note-header">
+      <h1>Home</h1>
+    </div>
   </div>
 </template>
 

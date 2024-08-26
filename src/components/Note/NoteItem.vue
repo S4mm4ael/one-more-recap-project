@@ -41,7 +41,7 @@ export default {
 .note-header-container {
   display: flex;
   gap: 10px;
-  align-items: center;
+  justify-content: space-between;
 }
 .note-header {
   margin: 0;
