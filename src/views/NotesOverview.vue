@@ -2,8 +2,8 @@
   <div class="notes">
     <NewNote :addNewNote="addNewNote" />
     <div class="view-buttons-container">
-      <SvgColumns />
-      <SvgGrids />
+      <SvgColumns :class="{active: column}" @click="toggleView(true)" />
+      <SvgGrids :class="{active: !column}" @click="toggleView(false)" />
     </div>
     <NoteItem
       v-for="note in notes"
@@ -35,6 +35,7 @@ export default {
   data() {
     return {
       notes: mockedNotes,
+      column: true,
     };
   },
   methods: {
@@ -48,6 +49,9 @@ export default {
     },
     removeNote(id) {
       this.notes = this.notes.filter((note) => note.id !== id);
+    },
+    toggleView(isColumn) {
+      this.column = isColumn;
     },
   },
 };
@@ -69,5 +73,8 @@ export default {
 }
 .view-buttons-container svg {
   cursor: pointer;
+}
+.view-buttons-container svg.active {
+  fill: blue;
 }
 </style>
