@@ -3,7 +3,7 @@
     <div class="wrapper-content">
       <div id="app">
         <HeaderMain v-if="showHeader" />
-        <MessageContainer message="test" />
+        <MessageContainer v-if="{message}" :message="message" />
         <section>
           <div class="container">
             <router-view />
@@ -23,6 +23,11 @@ export default {
   components: {
     HeaderMain,
     MessageContainer,
+  },
+  data() {
+    return {
+      message: "Hello, Vue!",
+    };
   },
   computed: {
     showHeader() {

@@ -1,11 +1,59 @@
 <template>
   <header class="header">
-    <router-link v-for="route in routes" :key="route.name" :to="route.path">{{
-      route.name
-    }}</router-link>
+    <router-link
+      v-for="route in routes"
+      :key="route.name"
+      :to="route.path"
+      active-class="active-tab"
+    >
+      {{ route.name }}
+    </router-link>
+  </header>
+</template>
+<template>
+  <header class="header">
+    <router-link
+      v-for="route in routes"
+      :key="route.name"
+      :to="route.path"
+      active-class="active-tab"
+    >
+      {{ route.name }}
+    </router-link>
   </header>
 </template>
 
+<script>
+import {routes} from "../../router";
+
+export default {
+  name: "HeaderMain",
+  data() {
+    return {
+      routes,
+    };
+  },
+};
+</script>
+
+<style scoped>
+.header {
+  display: flex;
+  gap: 10px;
+}
+
+.router-link-active {
+  font-weight: bold;
+  color: blue;
+  border-bottom: 2px solid blue;
+}
+
+.active-tab {
+  font-weight: bold;
+  color: blue;
+  border-bottom: 2px solid blue;
+}
+</style>
 <script>
 import {routes} from "../../router";
 

@@ -1,6 +1,5 @@
 <template>
   <div class="notes">
-    <h1>Notes</h1>
     <NewNote :addNewNote="addNewNote" />
     <NoteItem
       v-for="note in notes"
