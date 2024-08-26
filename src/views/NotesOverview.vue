@@ -4,9 +4,11 @@
     <NoteItem
       v-for="note in notes"
       :key="note.id"
+      :id="note.id"
       :title="note.title"
       :describe="note.describe"
       :date="note.date"
+      :remove-note="removeNote"
     />
   </div>
 </template>
@@ -35,6 +37,9 @@ export default {
         describe: describe ?? "Description",
         date: new Date().toLocaleDateString(),
       });
+    },
+    removeNote(id) {
+      this.notes = this.notes.filter((note) => note.id !== id);
     },
   },
 };
