@@ -53,6 +53,7 @@ export default {
 }
 .title-input {
   height: 40px;
+  overflow: hidden;
 }
 h3 {
   font-size: 24px;
