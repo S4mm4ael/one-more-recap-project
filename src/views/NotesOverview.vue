@@ -19,6 +19,7 @@
           :title="note.title"
           :describe="note.describe"
           :date="note.date"
+          :priority="note.priority"
           :remove-note="removeNote"
         />
       </div>

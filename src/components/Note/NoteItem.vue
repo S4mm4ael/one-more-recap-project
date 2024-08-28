@@ -1,5 +1,5 @@
 <template>
-  <div class="note-item">
+  <div :class="['note-item', priority]">
     <div class="note-header-container">
       <h3 class="note-header">{{ title }}</h3>
       <button @click="removeNoteFromParent()" class="button-delete">X</button>
@@ -18,6 +18,7 @@ export default {
     title: String,
     describe: String,
     date: String,
+    priority: String,
     removeNote: {
       type: Function,
       required: true,
@@ -33,8 +34,7 @@ export default {
 
 <style scoped>
 .note-item {
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
   margin-bottom: 10px;
 }
@@ -63,5 +63,14 @@ export default {
   padding: 5px 10px;
   cursor: pointer;
   height: 30px;
+}
+.usual {
+  border: 2px solid #ccc;
+}
+.important {
+  border: 2px solid #ffe600;
+}
+.veryImportant {
+  border: 2px solid #ff4d4f;
 }
 </style>
