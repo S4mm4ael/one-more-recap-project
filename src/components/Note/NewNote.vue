@@ -1,7 +1,12 @@
 <template>
   <div class="new-note">
     <h3>Add new note</h3>
-    <input type="text" placeholder="Title" v-model="title" />
+    <textarea
+      type="text"
+      placeholder="Title"
+      v-model="title"
+      class="title-input"
+    />
     <textarea placeholder="Describe" v-model="description" />
     <p class="error-message" v-if="errorMessage">{{ errorMessage }}</p>
     <button @click="handleAddNewNote">Add note</button>
@@ -46,7 +51,9 @@ export default {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
+.title-input {
+  height: 40px;
+}
 h3 {
   font-size: 24px;
   margin-bottom: 10px;
