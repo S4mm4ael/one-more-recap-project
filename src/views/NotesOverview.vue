@@ -60,12 +60,14 @@ export default {
     },
   },
   methods: {
-    addNewNote(title, describe) {
+    addNewNote(title, describe, priority) {
+      console.log({title, describe, priority});
       this.notes.push({
-        id: this.notes.length + 1,
+        id: String(this.notes.length + 1),
         title: title ?? "New Note",
         describe: describe ?? "Description",
         date: new Date().toLocaleDateString(),
+        priority: priority,
       });
     },
     removeNote(id) {
