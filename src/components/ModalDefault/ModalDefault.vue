@@ -1,13 +1,13 @@
 <template>
-  <div class="modal-wrapper">
+  <div class="modal-wrapper" @click="$emit('closeModal')">
     <div class="modal-container">
       <div class="modal-header">
         <h3 class="modal-title">{{ title }}</h3>
-        <button class="modal-close" @click="handleClose">X</button>
+        <button class="modal-close" @click="$emit('closeModal')">X</button>
       </div>
-    </div>
-    <div class="modal-body">
-      <slot></slot>
+      <div class="modal-body">
+        <slot></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -17,12 +17,6 @@ export default {
   props: {
     title: {type: String, required: true},
     closeModal: {type: Function, required: true},
-  },
-  computed: {},
-  methods: {
-    handleClose() {
-      this.closeModal();
-    },
   },
 };
 </script>

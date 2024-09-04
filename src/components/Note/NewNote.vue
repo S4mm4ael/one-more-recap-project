@@ -20,7 +20,7 @@
     <ModalDefault
       v-if="toggleModal"
       :title="modalTitle"
-      :closeModal="closeModal"
+      @closeModal="closeModal"
     />
   </div>
 </template>
