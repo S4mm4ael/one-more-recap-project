@@ -5,16 +5,24 @@
       <SvgColumns :class="{active: column}" @click="toggleView(true)" />
       <SvgGrids :class="{active: !column}" @click="toggleView(false)" />
     </div>
-    <div :class="{'grid-view': !column, 'column-view': column}">
-      <NoteItem
-        v-for="note in notes"
-        :key="note.id"
-        :id="note.id"
-        :title="note.title"
-        :describe="note.describe"
-        :date="note.date"
-        :remove-note="removeNote"
-      />
+    <SearchBox
+      :value="searchQuery"
+      placeholder="Find your note"
+      @search="searchQuery = $event"
+    />
+    <div class="notes-container">
+      <div :class="{'grid-view': !column, 'column-view': column}">
+        <NoteItem
+          v-for="note in filteredNotes"
+          :key="note.id"
+          :id="note.id"
+          :title="note.title"
+          :describe="note.describe"
+          :date="note.date"
+          :priority="note.priority"
+          :remove-note="removeNote"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -25,6 +33,7 @@ import NewNote from "../components/Note/NewNote.vue";
 import NoteItem from "../components/Note/NoteItem.vue";
 import SvgColumns from "../assets/svg/columns.svg";
 import SvgGrids from "../assets/svg/grids.svg";
+import SearchBox from "@/components/SearchBox/SearchBox.vue";
 
 export default {
   name: "NotesOverview",
@@ -33,20 +42,32 @@ export default {
     NoteItem,
     SvgColumns,
     SvgGrids,
+    SearchBox,
   },
   data() {
     return {
       notes: mockedNotes,
       column: true,
+      searchQuery: "",
     };
   },
+  computed: {
+    filteredNotes() {
+      if (!this.searchQuery) return this.notes;
+      return this.notes.filter((note) =>
+        note.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    },
+  },
   methods: {
-    addNewNote(title, describe) {
+    addNewNote(title, describe, priority) {
+      console.log({title, describe, priority});
       this.notes.push({
-        id: this.notes.length + 1,
+        id: String(this.notes.length + 1),
         title: title ?? "New Note",
         describe: describe ?? "Description",
         date: new Date().toLocaleDateString(),
+        priority: priority,
       });
     },
     removeNote(id) {
@@ -84,10 +105,12 @@ export default {
   grid-template-columns: repeat(4, 1fr); /* 4 items in a row */
   gap: 10px;
 }
-
 .column-view {
   display: flex;
   flex-direction: column; /* Items in a single column */
   gap: 10px;
+}
+.notes-container {
+  margin-top: 15px;
 }
 </style>

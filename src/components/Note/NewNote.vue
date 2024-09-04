@@ -1,21 +1,38 @@
 <template>
   <div class="new-note">
     <h3>Add new note</h3>
-    <textarea
-      type="text"
-      placeholder="Title"
-      v-model="title"
-      class="title-input"
-    />
+    <div class="upper-container">
+      <textarea
+        type="text"
+        placeholder="Title"
+        v-model="title"
+        class="title-input"
+      />
+      <select v-model="priority">
+        <option value="usual">Usual</option>
+        <option value="important">Important</option>
+        <option value="veryImportant">Very Important</option>
+      </select>
+    </div>
     <textarea placeholder="Describe" v-model="description" />
     <p class="error-message" v-if="errorMessage">{{ errorMessage }}</p>
     <button @click="handleAddNewNote">Add note</button>
+    <ModalDefault
+      v-if="toggleModal"
+      :title="modalTitle"
+      @closeModal="closeModal"
+    />
   </div>
 </template>
 
 <script>
+import ModalDefault from "../ModalDefault/ModalDefault.vue";
+
 export default {
   name: "NewNote",
+  components: {
+    ModalDefault,
+  },
   props: {
     addNewNote: {
       type: Function,
@@ -26,7 +43,10 @@ export default {
     return {
       title: "",
       description: "",
+      priority: "usual",
       errorMessage: null,
+      toggleModal: false,
+      modalTitle: "New note added!",
     };
   },
   methods: {
@@ -38,9 +58,14 @@ export default {
         return;
       }
 
-      this.addNewNote(this.title, this.description);
+      this.addNewNote(this.title, this.description, this.priority);
       this.title = "";
       this.description = "";
+      this.priority = "";
+      this.toggleModal = true;
+    },
+    closeModal() {
+      this.toggleModal = false;
     },
   },
 };
@@ -53,6 +78,7 @@ export default {
 }
 .title-input {
   height: 40px;
+  overflow: hidden;
 }
 h3 {
   font-size: 24px;
@@ -89,5 +115,17 @@ button:hover {
   color: red;
   font-size: 14px;
   margin-top: 5px;
+}
+
+.upper-container {
+  display: flex;
+  gap: 10px;
+}
+
+.upper-container select {
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 </style>
