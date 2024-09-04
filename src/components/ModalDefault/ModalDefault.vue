@@ -3,11 +3,11 @@
     <div class="modal-container">
       <div class="modal-header">
         <h3 class="modal-title">{{ title }}</h3>
-        <button class="modal-close">X</button>
+        <button class="modal-close" @click="handleClose">X</button>
       </div>
-      <div class="modal-body">
-        <slot></slot>
-      </div>
+    </div>
+    <div class="modal-body">
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -16,9 +16,14 @@
 export default {
   props: {
     title: {type: String, required: true},
+    closeModal: {type: Function, required: true},
   },
   computed: {},
-  methods: {},
+  methods: {
+    handleClose() {
+      this.closeModal();
+    },
+  },
 };
 </script>
 

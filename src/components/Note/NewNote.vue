@@ -17,7 +17,11 @@
     <textarea placeholder="Describe" v-model="description" />
     <p class="error-message" v-if="errorMessage">{{ errorMessage }}</p>
     <button @click="handleAddNewNote">Add note</button>
-    <ModalDefault v-if="toggleModal" :title="modalTitle" />
+    <ModalDefault
+      v-if="toggleModal"
+      :title="modalTitle"
+      :closeModal="closeModal"
+    />
   </div>
 </template>
 
@@ -59,6 +63,9 @@ export default {
       this.description = "";
       this.priority = "";
       this.toggleModal = true;
+    },
+    closeModal() {
+      this.toggleModal = false;
     },
   },
 };
