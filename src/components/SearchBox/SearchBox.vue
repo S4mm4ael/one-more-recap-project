@@ -50,9 +50,6 @@ export default {
 svg {
   color: #e4e4e4;
 }
-.wrapper__search {
-  position: relative;
-}
 .search {
   top: 0px;
   bottom: 0px;

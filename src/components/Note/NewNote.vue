@@ -17,12 +17,18 @@
     <textarea placeholder="Describe" v-model="description" />
     <p class="error-message" v-if="errorMessage">{{ errorMessage }}</p>
     <button @click="handleAddNewNote">Add note</button>
+    <ModalDefault v-if="toggleModal" :title="modalTitle" />
   </div>
 </template>
 
 <script>
+import ModalDefault from "../ModalDefault/ModalDefault.vue";
+
 export default {
   name: "NewNote",
+  components: {
+    ModalDefault,
+  },
   props: {
     addNewNote: {
       type: Function,
@@ -35,6 +41,8 @@ export default {
       description: "",
       priority: "usual",
       errorMessage: null,
+      toggleModal: false,
+      modalTitle: "New note added!",
     };
   },
   methods: {
@@ -50,6 +58,7 @@ export default {
       this.title = "";
       this.description = "";
       this.priority = "";
+      this.toggleModal = true;
     },
   },
 };

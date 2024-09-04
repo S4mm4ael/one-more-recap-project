@@ -2,15 +2,15 @@
   <div class="modal-wrapper">
     <div class="modal-container">
       <div class="modal-header">
-        <h3 class="modal-title">{{title}}</h3>
+        <h3 class="modal-title">{{ title }}</h3>
         <button class="modal-close">X</button>
       </div>
       <div class="modal-body">
         <slot></slot>
       </div>
+    </div>
   </div>
 </template>
-
 
 <script>
 export default {
@@ -21,7 +21,6 @@ export default {
   methods: {},
 };
 </script>
-
 
 <style lang="scss" scoped>
 .modal-wrapper {
@@ -62,5 +61,4 @@ export default {
 .modal-body {
   margin-top: 10px;
 }
-
 </style>
