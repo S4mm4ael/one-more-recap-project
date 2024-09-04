@@ -18,6 +18,18 @@ export default {
     title: {type: String, required: true},
     closeModal: {type: Function, required: true},
   },
+  methods: {
+    handleKeydown(e) {
+      console.log(e.key);
+      e.key === "Escape" && this.$emit("closeModal");
+    },
+  },
+  mounted() {
+    document.body.addEventListener("keydown", this.handleKeydown);
+  },
+  beforeDestroy() {
+    document.body.removeEventListener("keydown", this.handleKeydown);
+  },
 };
 </script>
 
