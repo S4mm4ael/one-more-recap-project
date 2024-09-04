@@ -6,7 +6,7 @@
         <button class="modal-close" @click="$emit('closeModal')">X</button>
       </div>
       <div class="modal-body">
-        <slot></slot>
+        <slot name="body"></slot>
       </div>
     </div>
   </div>

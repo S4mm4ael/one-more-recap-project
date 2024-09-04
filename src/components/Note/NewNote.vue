@@ -21,7 +21,9 @@
       v-if="toggleModal"
       :title="modalTitle"
       @closeModal="closeModal"
-    />
+    >
+      <div slot="body"><p>You can proceed with a new note</p></div>
+    </ModalDefault>
   </div>
 </template>
 
