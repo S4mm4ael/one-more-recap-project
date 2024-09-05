@@ -18,7 +18,6 @@
 export default {
   props: {
     title: {type: String, required: true},
-    closeModal: {type: Function, required: true},
   },
   methods: {
     handleKeydown(e) {
