@@ -18,7 +18,7 @@
     <p class="error-message" v-if="errorMessage">{{ errorMessage }}</p>
     <button @click="handleAddNewNote">Add note</button>
     <ModalDefault
-      v-if="toggleModal"
+      v-show="toggleModal"
       :title="modalTitle"
       @closeModal="closeModal"
     >

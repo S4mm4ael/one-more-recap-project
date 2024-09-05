@@ -1,15 +1,17 @@
 <template>
-  <div class="modal-wrapper" @click="$emit('closeModal')">
-    <div class="modal-container">
-      <div class="modal-header">
-        <h3 class="modal-title">{{ title }}</h3>
-        <button class="modal-close" @click="$emit('closeModal')">X</button>
-      </div>
-      <div class="modal-body">
-        <slot name="body"></slot>
+  <transition name="modal">
+    <div class="modal-wrapper" @click="$emit('closeModal')">
+      <div class="modal-container">
+        <div class="modal-header">
+          <h3 class="modal-title">{{ title }}</h3>
+          <button class="modal-close" @click="$emit('closeModal')">X</button>
+        </div>
+        <div class="modal-body">
+          <slot name="body"></slot>
+        </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -71,5 +73,13 @@ export default {
 }
 .modal-body {
   margin-top: 10px;
+}
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.5s;
+}
+.modal-enter,
+.modal-leave-to {
+  opacity: 0;
 }
 </style>
