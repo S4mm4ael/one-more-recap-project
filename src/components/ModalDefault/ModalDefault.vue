@@ -1,6 +1,6 @@
 <template>
   <transition name="modal">
-    <div class="modal-wrapper" @click="$emit('closeModal')">
+    <div class="modal-wrapper" :class="[position ?? '']">
       <div class="modal-container">
         <div class="modal-header">
           <h3 class="modal-title">{{ title }}</h3>
@@ -18,6 +18,7 @@
 export default {
   props: {
     title: {type: String, required: true},
+    position: {type: String, required: false},
   },
   methods: {
     handleKeydown(e) {
@@ -45,6 +46,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.top {
+  justify-content: center;
+  align-items: flex-start;
 }
 .modal-container {
   width: 50%;

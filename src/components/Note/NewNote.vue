@@ -21,6 +21,7 @@
       v-show="toggleModal"
       :title="modalTitle"
       @closeModal="closeModal"
+      position="top"
     >
       <div slot="body"><p>You can proceed with a new note</p></div>
     </ModalDefault>
