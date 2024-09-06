@@ -1,6 +1,6 @@
 <template>
   <div class="notes">
-    <button @click="toggleModal = true">Add new note</button>
+    <button @click="toggleModal = true" class="add-button">Add new note</button>
     <div class="view-buttons-container">
       <SvgColumns :class="{active: column}" @click="toggleView(true)" />
       <SvgGrids :class="{active: !column}" @click="toggleView(false)" />
@@ -127,5 +127,13 @@ export default {
 }
 .notes-container {
   margin-top: 15px;
+}
+.add-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 </style>
