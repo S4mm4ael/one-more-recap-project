@@ -7,6 +7,7 @@
         placeholder="Title"
         v-model="title"
         class="title-input"
+        required
       />
       <select v-model="priority">
         <option value="usual">Usual</option>

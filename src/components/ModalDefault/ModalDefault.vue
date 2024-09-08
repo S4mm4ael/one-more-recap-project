@@ -1,10 +1,16 @@
 <template>
   <transition name="modal">
-    <div class="modal-wrapper" :class="[position ?? '']">
+    <div
+      class="modal-wrapper"
+      @click.self="$emit('closeModal')"
+      :class="[position ?? '']"
+    >
       <div class="modal-container">
         <div class="modal-header">
           <h3 class="modal-title">{{ title }}</h3>
-          <button class="modal-close" @click="$emit('closeModal')">X</button>
+          <button class="modal-close" @click.stop="$emit('closeModal')">
+            X
+          </button>
         </div>
         <div class="modal-body">
           <slot name="body"></slot>
@@ -22,7 +28,6 @@ export default {
   },
   methods: {
     handleKeydown(e) {
-      console.log(e.key);
       e.key === "Escape" && this.$emit("closeModal");
     },
   },
