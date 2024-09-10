@@ -88,7 +88,6 @@ export default {
       this.column = isColumn;
     },
     closeModal() {
-      console.log("called");
       this.toggleModal = false;
     },
   },
