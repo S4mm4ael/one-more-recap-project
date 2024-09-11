@@ -24,6 +24,9 @@
         error: !$v.description.required || !$v.description.minLength,
       }"
     />
+    <p class="error-message" v-if="!$v.priority.required">
+      Priority is required
+    </p>
     <p class="error-message" v-if="!$v.title.required">Title is required</p>
     <p class="error-message" v-if="!$v.title.minLength">
       Minimum length for title should be 3
@@ -76,6 +79,9 @@ export default {
       },
       description: {
         minLength: minLength(10),
+      },
+      priority: {
+        required,
       },
     };
   },
