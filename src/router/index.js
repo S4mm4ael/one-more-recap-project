@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import {Home, NotesOverview} from "../views/index.ts";
+import {Home, NotesOverview, NotFound} from "../views/index.ts";
 
 Vue.use(VueRouter);
 
@@ -19,6 +19,14 @@ export const routes = [
     component: NotesOverview,
     meta: {
       title: "Notes Overview",
+    },
+  },
+  {
+    path: "*",
+    name: "NotFound",
+    component: NotFound,
+    meta: {
+      title: "Page Not Found",
     },
   },
 ];
