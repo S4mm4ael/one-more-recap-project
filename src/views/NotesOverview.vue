@@ -25,7 +25,7 @@
       </div>
     </div>
     <ModalDefault
-      v-show="toggleModal"
+      v-if="toggleModal"
       :title="modalTitle"
       @closeModal="closeModal"
     >
