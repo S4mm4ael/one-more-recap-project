@@ -1,6 +1,6 @@
 <template>
   <div class="notes">
-    <NewNote :addNewNote="addNewNote" />
+    <button @click="toggleModal = true" class="add-button">Add new note</button>
     <div class="view-buttons-container">
       <SvgColumns :class="{active: column}" @click="toggleView(true)" />
       <SvgGrids :class="{active: !column}" @click="toggleView(false)" />
@@ -24,6 +24,13 @@
         />
       </div>
     </div>
+    <ModalDefault
+      v-if="toggleModal"
+      :title="modalTitle"
+      @closeModal="closeModal"
+    >
+      <div slot="body"><NewNote :addNewNote="addNewNote" /></div
+    ></ModalDefault>
   </div>
 </template>
 
@@ -34,6 +41,7 @@ import NoteItem from "../components/Note/NoteItem.vue";
 import SvgColumns from "../assets/svg/columns.svg";
 import SvgGrids from "../assets/svg/grids.svg";
 import SearchBox from "@/components/SearchBox/SearchBox.vue";
+import ModalDefault from "@/components/ModalDefault/ModalDefault.vue";
 
 export default {
   name: "NotesOverview",
@@ -43,12 +51,15 @@ export default {
     SvgColumns,
     SvgGrids,
     SearchBox,
+    ModalDefault,
   },
   data() {
     return {
       notes: mockedNotes,
       column: true,
       searchQuery: "",
+      toggleModal: false,
+      modalTitle: "Add new note",
     };
   },
   computed: {
@@ -75,6 +86,9 @@ export default {
     },
     toggleView(isColumn) {
       this.column = isColumn;
+    },
+    closeModal() {
+      this.toggleModal = false;
     },
   },
 };
@@ -112,5 +126,13 @@ export default {
 }
 .notes-container {
   margin-top: 15px;
+}
+.add-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 </style>

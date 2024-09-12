@@ -50,18 +50,18 @@ export default {
 svg {
   color: #e4e4e4;
 }
+
 .search {
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  position: absolute;
+  display: flex;
 }
+
 .search-icon {
-  height: 100%;
+  height: 32px;
   padding-left: 16px;
   padding-right: 16px;
   align-items: center;
-  display: flex;
+  position: relative;
+  top: 43px;
 }
 input {
   padding: 16px 16px 16px 56px !important;
