@@ -11,6 +11,7 @@ export const routes = [
     component: Home,
     meta: {
       title: "Home Page",
+      showInHeader: true,
     },
   },
   {
@@ -19,6 +20,7 @@ export const routes = [
     component: NotesOverview,
     meta: {
       title: "Notes Overview",
+      showInHeader: true,
     },
   },
   {
@@ -27,6 +29,7 @@ export const routes = [
     component: NotFound,
     meta: {
       title: "Page Not Found",
+      showInHeader: false,
     },
   },
 ];
