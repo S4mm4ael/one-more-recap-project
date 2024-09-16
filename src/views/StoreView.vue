@@ -1,25 +1,18 @@
 <template>
   <div class="store-view">
-    <p>{{ message }}</p>
+    <p>{{ getMessage }}</p>
   </div>
 </template>
 
 <script>
 export default {
   name: "StoreView",
-  data() {
-    return {
-      message: null,
-    };
-  },
-  created() {
-    this.message = "Hello, Vue!";
+  computed: {
+    getMessage() {
+      return this.$store.getters.getMessage;
+    },
   },
 };
 </script>
 
-<style scoped>
-.store-view {
-  /* Your styles here */
-}
-</style>
+<style scoped></style>
