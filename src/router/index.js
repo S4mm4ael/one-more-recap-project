@@ -29,7 +29,7 @@ export const routes = [
     name: "Store View",
     component: StoreView,
     meta: {
-      title: "Page Not Found",
+      title: "Store View",
       showInHeader: true,
     },
   },
