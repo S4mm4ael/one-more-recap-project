@@ -7,7 +7,9 @@ export default new Vuex.Store({
   state: {
     message: "Hello Vuex!",
   },
-  getters: {},
+  getters: {
+    getMessage: (state) => state.message,
+  },
   mutations: {
     setMessage(state, payload) {
       state.message = payload;

@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import {Home, NotesOverview, NotFound} from "../views/index.ts";
+import StoreView from "@/views/StoreView.vue";
 
 Vue.use(VueRouter);
 
@@ -19,7 +20,16 @@ export const routes = [
     name: "Notes Overview",
     component: NotesOverview,
     meta: {
-      title: "Notes Overview",
+      title: "Store view",
+      showInHeader: true,
+    },
+  },
+  {
+    path: "/store",
+    name: "Store View",
+    component: StoreView,
+    meta: {
+      title: "Page Not Found",
       showInHeader: true,
     },
   },
