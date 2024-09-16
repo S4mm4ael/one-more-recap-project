@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import {Home, NotesOverview, NotFound, PicturesView} from "../views/index.ts";
+import {Home, NotesOverview, NotFound, ProductView} from "../views/index.ts";
 
 Vue.use(VueRouter);
 
@@ -24,11 +24,11 @@ export const routes = [
     },
   },
   {
-    path: "/pictures",
-    name: "Pictures View",
-    component: PicturesView,
+    path: "/product",
+    name: "Product View",
+    component: ProductView,
     meta: {
-      title: "Pictures View",
+      title: "Product View",
       showInHeader: true,
     },
   },

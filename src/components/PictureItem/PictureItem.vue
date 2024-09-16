@@ -1,14 +1,14 @@
 <template>
-  <div class="picture-item">
+  <div class="product-item">
     <img
-      :src="picture.image"
-      :alt="picture.title"
-      class="picture-item__image"
+      :src="product.image"
+      :alt="product.title"
+      class="product-item__image"
     />
-    <div class="picture-item__details">
-      <h2 class="picture-item__title">{{ picture.title }}</h2>
-      <p class="picture-item__price">${{ picture.price.toFixed(2) }}</p>
-      <p class="picture-item__description">{{ picture.description }}</p>
+    <div class="product-item__details">
+      <h2 class="product-item__title">{{ product.title }}</h2>
+      <p class="product-item__price">${{ product.price.toFixed(2) }}</p>
+      <p class="product-item__description">{{ product.description }}</p>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@
 export default {
   name: "PictureItem",
   props: {
-    picture: {
+    product: {
       type: Object,
       required: true,
     },
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style scoped>
-.picture-item {
+.product-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,30 +38,30 @@ export default {
   margin-bottom: 20px;
 }
 
-.picture-item__image {
+.product-item__image {
   width: 100%;
   height: auto;
   border-radius: 8px;
   margin-bottom: 15px;
 }
 
-.picture-item__details {
+.product-item__details {
   text-align: center;
 }
 
-.picture-item__title {
+.product-item__title {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.picture-item__price {
+.product-item__price {
   font-size: 16px;
   color: #007bff;
   margin-bottom: 10px;
 }
 
-.picture-item__description {
+.product-item__description {
   font-size: 14px;
   color: #666;
 }

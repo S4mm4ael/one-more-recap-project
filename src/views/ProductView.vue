@@ -1,13 +1,13 @@
 <template>
-  <div class="pictures-view">
-    <PictureItem v-for="item in picturesList" :key="item.id" :picture="item" />
+  <div class="product-view">
+    <PictureItem v-for="item in picturesList" :key="item.id" :product="item" />
   </div>
 </template>
 
 <script>
 import {PictureItem} from "@/components/index";
 export default {
-  name: "PicturesView",
+  name: "ProductView",
   components: {
     PictureItem,
   },
@@ -17,14 +17,13 @@ export default {
     };
   },
   created() {
-    this.picturesList = this.$store.getters.getPicturesList;
-    console.log(this.picturesList);
+    this.picturesList = this.$store.getters.getProductsList;
   },
 };
 </script>
 
 <style scoped>
-.pictures-view {
+.product-view {
   display: flex;
   flex-direction: column;
   align-items: center;

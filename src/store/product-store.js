@@ -1,4 +1,4 @@
-const picturesList = [
+const productsList = [
   {
     id: 1,
     title: "Nike Red",
@@ -29,12 +29,12 @@ const picturesList = [
   },
 ];
 
-export const picturesStore = {
+export const productsStore = {
   state: {
-    list: picturesList,
+    list: productsList,
   },
   getters: {
-    getPicturesList: (state) => state.list,
+    getProductsList: (state) => state.list,
   },
   mutations: {},
   actions: {},
