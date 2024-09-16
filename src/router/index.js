@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import {Home, NotesOverview, NotFound} from "../views/index.ts";
-import StoreView from "@/views/StoreView.vue";
+import {Home, NotesOverview, NotFound, PicturesView} from "../views/index.ts";
 
 Vue.use(VueRouter);
 
@@ -25,11 +24,11 @@ export const routes = [
     },
   },
   {
-    path: "/store",
-    name: "Store View",
-    component: StoreView,
+    path: "/pictures",
+    name: "Pictures View",
+    component: PicturesView,
     meta: {
-      title: "Store View",
+      title: "Pictures View",
       showInHeader: true,
     },
   },

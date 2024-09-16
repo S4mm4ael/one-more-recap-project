@@ -1,5 +1,5 @@
 <template>
-  <div class="store-view">
+  <div class="pictures-view">
     <p>
       Message from store: <b>{{ getMessage }}</b>
     </p>
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "StoreView",
+  name: "PicturesView",
   data() {
     return {
       message: "",
@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style scoped>
-.store-view {
+.pictures-view {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,12 +42,12 @@ export default {
   margin: 0 auto;
 }
 
-.store-view p {
+.pictures-view p {
   font-size: 16px;
   margin-bottom: 10px;
 }
 
-.store-view input[type="text"] {
+.pictures-view input[type="text"] {
   padding: 10px;
   font-size: 14px;
   border: 1px solid #ccc;
@@ -57,7 +57,7 @@ export default {
   box-sizing: border-box;
 }
 
-.store-view button {
+.pictures-view button {
   padding: 10px 20px;
   font-size: 14px;
   color: #fff;
@@ -67,7 +67,7 @@ export default {
   cursor: pointer;
 }
 
-.store-view button:hover {
+.pictures-view button:hover {
   background-color: #0056b3;
 }
 </style>
