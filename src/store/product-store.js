@@ -35,6 +35,9 @@ export const productsStore = {
   },
   getters: {
     getProductsList: (state) => state.list,
+    getProductById: (state) => (id) => {
+      return state.list.find((product) => product.id === id);
+    },
   },
   mutations: {},
   actions: {},

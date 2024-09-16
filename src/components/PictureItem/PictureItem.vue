@@ -6,7 +6,9 @@
       class="product-item__image"
     />
     <div class="product-item__details">
-      <h2 class="product-item__title">{{ product.title }}</h2>
+      <router-link class="product-item__title" :to="/products/ + product.id">{{
+        product.title
+      }}</router-link>
       <p class="product-item__price">${{ product.price.toFixed(2) }}</p>
       <p class="product-item__description">{{ product.description }}</p>
     </div>

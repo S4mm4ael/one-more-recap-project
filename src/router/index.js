@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import {Home, NotesOverview, NotFound, ProductView} from "../views/index.ts";
+import ProductPage from "@/views/ProductPage.vue";
 
 Vue.use(VueRouter);
 
@@ -24,12 +25,21 @@ export const routes = [
     },
   },
   {
-    path: "/product",
-    name: "Product View",
+    path: "/products",
+    name: "Products View",
     component: ProductView,
     meta: {
-      title: "Product View",
+      title: "Products View",
       showInHeader: true,
+    },
+  },
+  {
+    path: "/products/:id",
+    name: "Product View",
+    component: ProductPage,
+    meta: {
+      title: "Product View",
+      showInHeader: false,
     },
   },
   {
