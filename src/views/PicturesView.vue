@@ -1,14 +1,6 @@
 <template>
   <div class="pictures-view">
-    <PictureItem
-      v-for="item in picturesList"
-      :key="item.id"
-      :id="item.id"
-      :titile="item.title"
-      :price="item.price"
-      :description="item.description"
-      :image="item.image"
-    />
+    <PictureItem v-for="item in picturesList" :key="item.id" :picture="item" />
   </div>
 </template>
 

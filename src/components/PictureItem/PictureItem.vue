@@ -1,10 +1,14 @@
 <template>
   <div class="picture-item">
-    <img :src="image" :alt="title" class="picture-item__image" />
+    <img
+      :src="picture.image"
+      :alt="picture.title"
+      class="picture-item__image"
+    />
     <div class="picture-item__details">
-      <h2 class="picture-item__title">{{ title }}</h2>
-      <p class="picture-item__price">${{ price.toFixed(2) }}</p>
-      <p class="picture-item__description">{{ description }}</p>
+      <h2 class="picture-item__title">{{ picture.title }}</h2>
+      <p class="picture-item__price">${{ picture.price.toFixed(2) }}</p>
+      <p class="picture-item__description">{{ picture.description }}</p>
     </div>
   </div>
 </template>
@@ -13,11 +17,10 @@
 export default {
   name: "PictureItem",
   props: {
-    id: Number,
-    titile: String,
-    price: Number,
-    description: String,
-    image: String,
+    picture: {
+      type: Object,
+      required: true,
+    },
   },
 };
 </script>
