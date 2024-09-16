@@ -1,10 +1,17 @@
 <template>
   <div class="product-card">
-    <img
-      :src="product.image"
-      :alt="product.title"
-      class="product-card__image"
-    />
+    <div class="product-slider">
+      <carousel
+        :perPage="1"
+        :paginationEnable="true"
+        paginationColor="#b3b3b3"
+        paginationActiveColor="#494ce8"
+      >
+        <slide v-for="(slide, index) in product.gallery" :key="index"
+          ><img :src="slide.src" :alt="slide.name" class="product-card__image"
+        /></slide>
+      </carousel>
+    </div>
     <div class="product-card__details">
       <h2 class="product-card__title">{{ product.title }}</h2>
       <p class="product-card__price">${{ product.price.toFixed(2) }}</p>
@@ -35,10 +42,10 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .product-card {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   padding: 20px;
   margin: 0 auto;
@@ -70,5 +77,9 @@ export default {
 .product-card__description {
   font-size: 14px;
   color: #666;
+}
+.product-slider,
+.product-card__details {
+  width: 48%;
 }
 </style>
