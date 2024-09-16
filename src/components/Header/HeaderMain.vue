@@ -10,18 +10,6 @@
     </router-link>
   </header>
 </template>
-<template>
-  <header class="header">
-    <router-link
-      v-for="route in routes"
-      :key="route.name"
-      :to="route.path"
-      active-class="active-tab"
-    >
-      {{ route.name }}
-    </router-link>
-  </header>
-</template>
 
 <script>
 import {routes} from "../../router";
@@ -30,7 +18,7 @@ export default {
   name: "HeaderMain",
   data() {
     return {
-      routes,
+      routes: routes.filter((route) => route.meta.showInHeader),
     };
   },
 };
@@ -40,12 +28,6 @@ export default {
 .header {
   display: flex;
   gap: 10px;
-}
-
-.router-link-active {
-  font-weight: bold;
-  color: blue;
-  border-bottom: 2px solid blue;
 }
 
 .active-tab {
@@ -61,7 +43,7 @@ export default {
   name: "HeaderMain",
   data() {
     return {
-      routes,
+      routes: routes.filter((route) => route.meta.showInHeader),
     };
   },
 };
@@ -86,3 +68,4 @@ export default {
   color: #666;
 }
 </style>
+style

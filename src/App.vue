@@ -36,3 +36,11 @@ export default {
   },
 };
 </script>
+
+<style>
+.wrapper {
+}
+.container {
+  padding: 0px 20px;
+}
+</style>
