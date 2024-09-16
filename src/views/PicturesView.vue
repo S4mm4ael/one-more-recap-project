@@ -1,12 +1,24 @@
 <template>
   <div class="pictures-view">
-    <h1>Pictures view</h1>
+    <PictureItem
+      v-for="item in picturesList"
+      :key="item.id"
+      :id="item.id"
+      :titile="item.title"
+      :price="item.price"
+      :description="item.description"
+      :image="item.image"
+    />
   </div>
 </template>
 
 <script>
+import {PictureItem} from "@/components/index";
 export default {
   name: "PicturesView",
+  components: {
+    PictureItem,
+  },
   data() {
     return {
       picturesList: null,
