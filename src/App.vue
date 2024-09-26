@@ -1,46 +1,44 @@
 <template>
   <div class="wrapper">
-    <div class="wrapper-content">
-      <div id="app">
-        <HeaderMain v-if="showHeader" />
-        <MessageContainer v-if="{message}" :message="message" />
-        <section>
-          <div class="container">
-            <router-view />
+
+    <header>
+      <div class="navbar">
+        <div class="container">
+          <div class="navbar-content">
+            <div class="logo">Users CRM</div>
+            <ul class="navbar-list">
+              <li class="navbar-item" v-for="link in links" :key="link.title">
+                <router-link class="navbar-link" :title="link.title" :to="link.url">{{ link.title }}</router-link>
+              </li>
+            </ul>
           </div>
-        </section>
+        </div>
       </div>
-    </div>
+    </header>
+    <router-view></router-view>
+
+    <!-- <footer></footer> -->
+
   </div>
 </template>
 
 <script>
-import HeaderMain from "./components/Header/HeaderMain.vue";
-import MessageContainer from "./components/Message/MessageContainer.vue";
-
 export default {
-  name: "App",
-  components: {
-    HeaderMain,
-    MessageContainer,
-  },
-  data() {
+  data () {
     return {
-      message: "Hello, Vue!",
-    };
-  },
-  computed: {
-    showHeader() {
-      return this.$route.name !== "App";
-    },
-  },
-};
+      links: [
+        { title: 'Home', url: '/' },
+        { title: 'Users', url: '/users' },
+      ]
+    }
+  }
+}
 </script>
 
-<style>
-.wrapper {
-}
-.container {
-  padding: 0px 20px;
+<style lang="scss">
+.navbar-link {
+  &.router-link-exact-active {
+    color: #5247e7;
+  }
 }
 </style>
