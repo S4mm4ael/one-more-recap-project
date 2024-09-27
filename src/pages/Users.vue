@@ -2,10 +2,8 @@
   <div class="wrapper-content wrapper-content--fixed">
     <section>
       <div class="container">
-
         <!-- table -->
         <table>
-
           <!-- head -->
           <thead>
             <tr>
@@ -19,18 +17,21 @@
           <tbody>
             <tr v-for="user in usersSort" :key="user.id">
               <td>
-                <img :src="user.img" :alt="user.name">
+                <img :src="user.img" :alt="user.name" />
                 <span>{{ user.name }}</span>
               </td>
-              <td> {{ user.age }} </td>
-              <td> {{ user.gender }} </td>
+              <td>{{ user.age }}</td>
+              <td>{{ user.gender }}</td>
             </tr>
           </tbody>
-
         </table>
-        <p style="text-align:center;">
-          <span> debug: sort: {{ currentSort }}, dir: {{ currentSortDir }} </span>
-          <span> page: {{ this.page.current }}, length: {{ this.page.length }} </span>
+        <p style="text-align: center">
+          <span>
+            debug: sort: {{ currentSort }}, dir: {{ currentSortDir }}
+          </span>
+          <span>
+            page: {{ this.page.current }}, length: {{ this.page.length }}
+          </span>
         </p>
       </div>
     </section>
@@ -39,8 +40,8 @@
     <section>
       <div class="contaier">
         <div class="button-list">
-          <div class="btn btnPrimary" @click="prevPage"> &#8592; </div>
-          <div class="btn btnPrimary" @click="nextPage"> &#8594; </div>
+          <div class="btn btnPrimary" @click="prevPage">&#8592;</div>
+          <div class="btn btnPrimary" @click="nextPage">&#8594;</div>
         </div>
       </div>
     </section>
@@ -48,64 +49,63 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 
 export default {
-  data () {
+  data() {
     return {
       users: [],
-      currentSort: 'name',
-      currentSortDir: 'asc',
+      currentSort: "name",
+      currentSortDir: "asc",
       page: {
         current: 1,
-        length: 4
-      }
-    }
+        length: 4,
+      },
+    };
   },
-  created () {
+  created() {
     axios
-      .get('https://api.myjson.com/bins/rzgya')
-        .then(response => {
-          // console.log(response.data)
-          this.users = response.data
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      .get("https://api.myjson.com/bins/rzgya")
+      .then((response) => {
+        // console.log(response.data)
+        this.users = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
   computed: {
-    usersSort () {
-      return this.users.sort((a, b) => {
-        let mod = 1
-        if (this.currentSortDir === 'desc') mod = -1
-        if (a[this.currentSort] < b[this.currentSort]) return -1 * mod
-        if (a[this.currentSort] > b[this.currentSort]) return 1 * mod
-        return 0
-      }).filter((row, index) => {
-        let start = (this.page.current-1)*this.page.length
-        let end = this.page.current * this.page.length
-        if (index >= start && index < end) return true
-      })
-    }
+    usersSort() {
+      const sortedUsers = [...this.users].sort((a, b) => {
+        const modifier = this.currentSortDir === "desc" ? -1 : 1;
+        if (a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+        if (a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
+        return 0;
+      });
+
+      const start = (this.page.current - 1) * this.page.length;
+      const end = this.page.current * this.page.length;
+      return sortedUsers.slice(start, end);
+    },
   },
   methods: {
-    sort (e) {
+    sort(e) {
       if (e === this.currentSort) {
-        this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc'
+        this.currentSortDir = this.currentSortDir === "asc" ? "desc" : "asc";
       }
-      this.currentSort = e
+      this.currentSort = e;
     },
     // Pagination
-    prevPage () {
-      if (this.page.current > 1) this.page.current-=1
+    prevPage() {
+      if (this.page.current > 1) this.page.current -= 1;
     },
-    nextPage () {
-      if ((this.page.current * this.page.length) < this.users.length) this.page.current+=1
-    }
-  }
-}
+    nextPage() {
+      if (this.page.current * this.page.length < this.users.length)
+        this.page.current += 1;
+    },
+  },
+};
 </script>
-
 
 <style lang="scss" scoped>
 img {
@@ -123,5 +123,4 @@ img {
     margin: 0 20px;
   }
 }
-
 </style>
