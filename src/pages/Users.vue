@@ -54,7 +54,56 @@ import axios from "axios";
 export default {
   data() {
     return {
-      users: [],
+      users: [
+        {
+          id: 1,
+          name: "John Doe",
+          age: 25,
+          gender: "male",
+        },
+        {
+          id: 2,
+          name: "Jane Doe",
+          age: 22,
+          gender: "female",
+        },
+        {
+          id: 3,
+          name: "John Smith",
+          age: 55,
+          gender: "male",
+        },
+        {
+          id: 4,
+          name: "Alice Johnson",
+          age: 30,
+          gender: "female",
+        },
+        {
+          id: 5,
+          name: "Bob Brown",
+          age: 45,
+          gender: "male",
+        },
+        {
+          id: 6,
+          name: "Charlie Davis",
+          age: 35,
+          gender: "male",
+        },
+        {
+          id: 7,
+          name: "Diana Evans",
+          age: 28,
+          gender: "female",
+        },
+        {
+          id: 8,
+          name: "Eve Foster",
+          age: 40,
+          gender: "female",
+        },
+      ],
       currentSort: "name",
       currentSortDir: "asc",
       page: {
