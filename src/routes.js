@@ -7,7 +7,7 @@ Vue.use(Router)
 // Pages
 import Home from '@/pages/Home'
 import NotFound from '@/pages/404'
-import Users from '@/pages/Users'
+import Notify from '@/pages/NotifyPage'
 
 // Routering
 export default new Router({
@@ -19,9 +19,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/users',
-      name: 'users',
-      component: Users
+      path: '/notify',
+      name: 'notify',
+      component: Notify
     },
     {
       path: '*',
