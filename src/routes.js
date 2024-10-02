@@ -1,32 +1,32 @@
 // default
-import Vue from 'vue'
-import Router from 'vue-router'
-
-Vue.use(Router)
+import {createMemoryHistory, createRouter} from "vue-router";
 
 // Pages
-import Home from '@/pages/Home'
-import NotFound from '@/pages/404'
-import Notify from '@/pages/NotifyPage'
+import HomePage from "@/pages/HomePage";
+import NotFound from "@/pages/404Page";
+import NotifyPage from "@/pages/NotifyPage";
 
-// Routering
-export default new Router({
-  // mode: 'history',
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/notify',
-      name: 'notify',
-      component: Notify
-    },
-    {
-      path: '*',
-      name: 'notFound',
-      component: NotFound
-    }
-  ]
-})
+const routes = [
+  {
+    path: "/",
+    name: "home",
+    component: HomePage,
+  },
+  {
+    path: "/notify",
+    name: "notify",
+    component: NotifyPage,
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "notFound",
+    component: NotFound,
+  },
+];
+
+const router = createRouter({
+  history: createMemoryHistory(),
+  routes: routes,
+});
+
+export default router;
