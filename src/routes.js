@@ -1,5 +1,8 @@
 // default
-import {createMemoryHistory, createRouter} from "vue-router";
+import Vue from "vue";
+import VueRouter from "vue-router";
+
+Vue.use(VueRouter);
 
 // Pages
 import HomePage from "@/pages/HomePage";
@@ -18,14 +21,14 @@ const routes = [
     component: NotifyPage,
   },
   {
-    path: "/:pathMatch(.*)*",
+    path: "*",
     name: "notFound",
     component: NotFound,
   },
 ];
 
-const router = createRouter({
-  history: createMemoryHistory(),
+const router = new VueRouter({
+  mode: "history",
   routes: routes,
 });
 

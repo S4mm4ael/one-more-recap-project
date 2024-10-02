@@ -67,7 +67,14 @@ export default {
   },
   computed: {
     messages() {
-      return this.$store.getters.getMessageMain;
+      // return this.$store.getters.getMessageMain;
+      return [
+        {tilte: "Title 1", text: "Text 1"},
+        {tilte: "Title 2", text: "Text 2"},
+        {tilte: "Title 3", text: "Text 3"},
+        {tilte: "Title 4", text: "Text 4"},
+        {tilte: "Title 5", text: "Text 5"},
+      ];
     },
   },
   methods: {
