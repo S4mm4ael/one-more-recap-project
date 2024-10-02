@@ -19,8 +19,7 @@
         </div>
       </div>
     </header>
-    <!-- 
-    <router-view></router-view> -->
+    <router-view></router-view>
 
     <!-- <footer></footer> -->
   </div>

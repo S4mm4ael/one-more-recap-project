@@ -35,12 +35,12 @@
             <preloader v-if="loading" :width="90" :height="90" />
 
             <!-- erorr -->
-            <div class="error" v-if="error">
+            <!-- <div class="error" v-if="error">
               <p>{{ error }}</p>
-            </div>
+            </div> -->
 
             <!-- notify -->
-            <notify v-if="!loading && !error" :messages="messages" />
+            <notify :messages="messages" />
           </div>
         </div>
       </div>
@@ -60,23 +60,30 @@ export default {
     return {
       loading: false,
       error: null,
-    };
-  },
-  mounted() {
-    this.getNotify();
-  },
-  computed: {
-    messages() {
-      // return this.$store.getters.getMessageMain;
-      return [
+      messages: [
         {tilte: "Title 1", text: "Text 1"},
         {tilte: "Title 2", text: "Text 2"},
         {tilte: "Title 3", text: "Text 3"},
         {tilte: "Title 4", text: "Text 4"},
         {tilte: "Title 5", text: "Text 5"},
-      ];
-    },
+      ],
+    };
   },
+  mounted() {
+    this.getNotify();
+  },
+  // computed: {
+  //   messages() {
+  //     // return this.$store.getters.getMessageMain;
+  //     return [
+  //       {tilte: "Title 1", text: "Text 1"},
+  //       {tilte: "Title 2", text: "Text 2"},
+  //       {tilte: "Title 3", text: "Text 3"},
+  //       {tilte: "Title 4", text: "Text 4"},
+  //       {tilte: "Title 5", text: "Text 5"},
+  //     ];
+  //   },
+  // },
   methods: {
     getNotifyLazy() {
       this.loading = true;
@@ -121,7 +128,7 @@ export default {
 }
 
 .notify__wrapper {
-  width: 400px;
+  width: 100%;
   background-color: #ffffff;
   padding: 30px;
   border-radius: 16px;
