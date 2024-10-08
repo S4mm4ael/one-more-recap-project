@@ -31,7 +31,7 @@
             <div class="error" v-if="error">
               <p>{{ error }}</p>
             </div>
-            <notify v-if="!loading && !error" :messages="messages" />
+            <repo v-if="!loading && !error" :messages="messages" />
           </div>
         </div>
       </div>
@@ -41,12 +41,12 @@
 
 <script>
 import axios from "axios";
-import notify from "@/components/NotifyComponent.vue";
+import repo from "@/components/RepoComponent.vue";
 // UI
 import preloader from "@/components/UI/PreloaderComponent.vue";
 
 export default {
-  components: {notify, preloader},
+  components: {repo, preloader},
   data() {
     return {
       loading: false,
@@ -73,7 +73,7 @@ export default {
       axios
         .get("https://tocode.ru/static/c/vue-pro/notifyApi.php")
         .then((reseponse) => {
-          let res = reseponse.data.notify,
+          let res = reseponse,
             messages = [],
             messagesMain = [];
 
