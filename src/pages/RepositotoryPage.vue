@@ -2,11 +2,9 @@
   <div class="wrapper-content wrapper-content--fixed">
     <section>
       <div class="container">
-        <!-- wrapper -->
         <div class="notify__wrapper">
-          <!-- title -->
           <div class="notify-title">
-            <p>Notify App</p>
+            <p>GitHub repository searcher</p>
             <svg
               @click="getNotifyLazy"
               version="1.1"
@@ -28,19 +26,12 @@
               </g>
             </svg>
           </div>
-
-          <!-- notify -->
           <div class="notify__content">
-            <!-- preloader -->
             <preloader v-if="loading" :width="90" :height="90" />
-
-            <!-- erorr -->
-            <!-- <div class="error" v-if="error">
+            <div class="error" v-if="error">
               <p>{{ error }}</p>
-            </div> -->
-
-            <!-- notify -->
-            <notify :messages="messages" />
+            </div>
+            <notify v-if="!loading && !error" :messages="messages" />
           </div>
         </div>
       </div>
@@ -60,30 +51,16 @@ export default {
     return {
       loading: false,
       error: null,
-      messages: [
-        {tilte: "Title 1", text: "Text 1"},
-        {tilte: "Title 2", text: "Text 2"},
-        {tilte: "Title 3", text: "Text 3"},
-        {tilte: "Title 4", text: "Text 4"},
-        {tilte: "Title 5", text: "Text 5"},
-      ],
     };
   },
   mounted() {
     this.getNotify();
   },
-  // computed: {
-  //   messages() {
-  //     // return this.$store.getters.getMessageMain;
-  //     return [
-  //       {tilte: "Title 1", text: "Text 1"},
-  //       {tilte: "Title 2", text: "Text 2"},
-  //       {tilte: "Title 3", text: "Text 3"},
-  //       {tilte: "Title 4", text: "Text 4"},
-  //       {tilte: "Title 5", text: "Text 5"},
-  //     ];
-  //   },
-  // },
+  computed: {
+    messages() {
+      return this.$store.getters.getMessageMain;
+    },
+  },
   methods: {
     getNotifyLazy() {
       this.loading = true;
