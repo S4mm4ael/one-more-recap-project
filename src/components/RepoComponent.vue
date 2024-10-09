@@ -10,6 +10,7 @@
     <button
       class="btn btnPrimary"
       @click="loadMore"
+      v-show="maxLength > 0"
       :disabled="maxLength === 0"
       :class="{btnDisabled: maxLength === 0}"
     >
@@ -68,9 +69,5 @@ td {
 
 button {
   margin-top: 20px;
-  &.btnDisabled {
-    cursor: default;
-    opacity: 0.6;
-  }
 }
 </style>

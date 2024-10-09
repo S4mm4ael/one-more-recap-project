@@ -14,12 +14,17 @@
                 @search="handleSearch"
                 placeholder="Search repository"
               />
-              <button class="btn btnPrimary" @click="getRepoLazy">
+              <button
+                class="btn btnPrimary"
+                @click="getRepo"
+                :disabled="searchDisabled"
+                :class="{btnDisabled: searchDisabled}"
+              >
                 Search
               </button>
             </div>
             <preloader v-if="loading" :width="90" :height="90" />
-            <div class="error" v-if="error">
+            <div class="error" v-if="error && !loading">
               <p>{{ error }}</p>
             </div>
             <repo v-if="!loading && !error" :repos="repos" />
@@ -31,7 +36,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import apiService from "@/services/apiMainService";
 import repo from "@/components/RepoComponent.vue";
 // UI
 import preloader from "@/components/UI/PreloaderComponent.vue";
@@ -47,17 +52,16 @@ export default {
       error: null,
     };
   },
-  mounted() {
-    this.getRepo();
-  },
   computed: {
     repos() {
       return this.$store.getters.getRepos;
     },
+    searchDisabled() {
+      return this.searchInput.length <= 3;
+    },
   },
   methods: {
     handleSearch(val) {
-      console.log(val);
       this.searchInput = val;
     },
     getRepoLazy() {
@@ -66,27 +70,21 @@ export default {
         this.getRepo();
       }, 1800);
     },
-    getRepo() {
+    async getRepo() {
+      console.log(this.searchInput);
       this.loading = true;
-      axios
-        .get
-        //link goes here
-        ()
-        .then((reseponse) => {
-          let res = reseponse;
-          let repos = [];
-          // filter
-          for (let i = 0; i < res.length; i++) {
-            repos.push(res[i]);
-          }
-
-          this.$store.dispatch("setRepos", repos);
-        })
-        .catch((error) => {
+      this.error = null;
+      try {
+        const response = await apiService.getRepositories(this.searchInput);
+        this.$store.dispatch("setRepos", response.data.items);
+      } catch {
+        (error) => {
           console.log(error);
           this.error = "Error: Network Error";
-        })
-        .finally(() => (this.loading = false));
+        };
+      } finally {
+        () => (this.loading = false);
+      }
     },
   },
 };
