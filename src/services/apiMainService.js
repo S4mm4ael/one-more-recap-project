@@ -9,6 +9,7 @@ const apiClient = axios.create({
 
 export default {
   getRepositories(searchInput) {
+    console.log("api call search repo name:", searchInput);
     return apiClient.get(`/repositories`, {params: {q: searchInput}});
   },
 };

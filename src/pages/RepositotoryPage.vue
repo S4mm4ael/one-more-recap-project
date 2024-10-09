@@ -83,7 +83,7 @@ export default {
           this.error = "Error: Network Error";
         };
       } finally {
-        () => (this.loading = false);
+        this.loading = false;
       }
     },
   },
