@@ -5,7 +5,7 @@
         <div class="repo__wrapper">
           <div class="repo-title">
             <p>GitHub repository search</p>
-            <ReloadIcon :getrepoLazy="getrepoLazy" />
+            <ReloadIcon :getRepoLazy="getRepoLazy" />
           </div>
           <div class="repo__content">
             <SearchComponent
@@ -17,7 +17,7 @@
             <div class="error" v-if="error">
               <p>{{ error }}</p>
             </div>
-            <repo v-if="!loading && !error" :messages="messages" />
+            <repo v-if="!loading && !error" :repos="repos" />
           </div>
         </div>
       </div>
@@ -43,11 +43,11 @@ export default {
     };
   },
   mounted() {
-    this.getrepo();
+    this.getRepo();
   },
   computed: {
-    messages() {
-      return this.$store.getters.getMessageMain;
+    repos() {
+      return this.$store.getters.getRepos;
     },
   },
   methods: {
@@ -55,29 +55,27 @@ export default {
       console.log(val);
       this.searchInput = val;
     },
-    getrepoLazy() {
+    getRepoLazy() {
       this.loading = true;
       setTimeout(() => {
-        this.getrepo();
+        this.getRepo();
       }, 1800);
     },
-    getrepo() {
+    getRepo() {
       this.loading = true;
       axios
-        .get("https://tocode.ru/static/c/vue-pro/repoApi.php")
+        .get
+        //link goes here
+        ()
         .then((reseponse) => {
-          let res = reseponse,
-            messages = [],
-            messagesMain = [];
-
+          let res = reseponse;
+          let repos = [];
           // filter
           for (let i = 0; i < res.length; i++) {
-            if (res[i].main) messagesMain.push(res[i]);
-            else messages.push(res[i]);
+            repos.push(res[i]);
           }
 
-          this.$store.dispatch("setMessage", messages);
-          this.$store.dispatch("setMessageMain", messagesMain);
+          this.$store.dispatch("setRepos", repos);
         })
         .catch((error) => {
           console.log(error);

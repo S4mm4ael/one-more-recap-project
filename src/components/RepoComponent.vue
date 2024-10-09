@@ -1,9 +1,9 @@
 <template>
   <table>
     <transition-group name="list" tag="tbody">
-      <tr v-for="message in messages" :key="message.title">
+      <tr v-for="repo in repos" :key="repo.title">
         <td>
-          <span>{{ message.title }}</span>
+          <span>{{ repo.title }}</span>
         </td>
       </tr>
     </transition-group>
@@ -21,19 +21,19 @@
 <script>
 export default {
   props: {
-    messages: {
+    repos: {
       type: Array,
       required: true,
     },
   },
   computed: {
     maxLength() {
-      return this.$store.getters.getMessageFilter.length;
+      return this.$store.getters.getRepos.length;
     },
   },
   methods: {
     loadMore() {
-      this.$store.dispatch("loadMessages").catch((err) => {
+      this.$store.dispatch("loadRepos").catch((err) => {
         console.log(err);
       });
     },

@@ -1,44 +1,29 @@
-import loadMore from '../assets/js/loadMore.js'
+import loadMore from "../assets/js/loadMore.js";
 
 export default {
   state: {
-    messages: [],
-    messagesMain: []
+    repos: [],
   },
   mutations: {
-    setMessage (state, payload) {
-      state.messages = payload
+    setRepos(state, payload) {
+      state.messages = payload;
     },
-    setMessageMain (state, payload) {
-      state.messagesMain = payload
+    loadRepos(state, payload) {
+      state.messagesMain = [...state.messagesMain, ...payload];
     },
-    loadMessages (state, payload) {
-      state.messagesMain = [...state.messagesMain, ...payload]
-    }
   },
   actions: {
-    setMessage ({commit}, payload) {
-      commit('setMessage', payload)
+    setRepos({commit}, payload) {
+      commit("setRepos", payload);
     },
-    setMessageMain ({commit}, payload) {
-      commit('setMessageMain', payload)
+    loadRepos({commit, getters}) {
+      let res = getters.getMessageFilter;
+      commit("loadRepos", loadMore(res));
     },
-    loadMessages ({commit, getters}) {
-      let res = getters.getMessageFilter
-      commit('loadMessages', loadMore(res))
-    }
   },
   getters: {
-    getMessage (state) {
-      return state.messages
+    getRepos(state) {
+      return state.repos;
     },
-    getMessageFilter (state) {
-      return state.messages.filter(mes => {
-        return mes.main === false
-      })
-    },
-    getMessageMain (state) {
-      return state.messagesMain
-    }
-  }
-}
+  },
+};
