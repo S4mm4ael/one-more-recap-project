@@ -1,12 +1,30 @@
 <template>
-  <table>
-    <transition-group name="list" tag="tbody">
-      <tr v-for="repo in repos" :key="repo.id">
-        <td>
-          <span>{{ repo.full_name }}</span>
-        </td>
-      </tr>
-    </transition-group>
+  <div class="repo-container">
+    <table class="repo-table">
+      <transition-group name="list" tag="tbody">
+        <tr v-for="repo in repos" :key="repo.id" class="repo-row">
+          <td class="repo-info">
+            <a :href="repo.html_url" target="_blank" class="repo-name">{{
+              repo.full_name
+            }}</a>
+            <p class="repo-description">{{ repo.description }}</p>
+            <div class="repo-owner">
+              <img
+                :src="repo.owner.avatar_url"
+                alt="Owner Avatar"
+                class="owner-avatar"
+              />
+              <a
+                :href="repo.owner.html_url"
+                target="_blank"
+                class="owner-name"
+                >{{ repo.owner.login }}</a
+              >
+            </div>
+          </td>
+        </tr>
+      </transition-group>
+    </table>
     <button
       class="btn btnPrimary"
       @click="loadMore"
@@ -16,7 +34,7 @@
     >
       Load more
     </button>
-  </table>
+  </div>
 </template>
 
 <script>
@@ -42,32 +60,80 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-table {
-  text-align: center;
-}
-td {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 6px;
-  font-size: 14px;
+<style scoped>
+.repo-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-/* Animation */
-.list-item {
-  display: inline-block;
+.repo-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.repo-row {
+  border-bottom: 1px solid #ddd;
+}
+
+.repo-info {
+  padding: 10px;
+}
+
+.repo-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.repo-name:hover {
+  text-decoration: underline;
+}
+
+.repo-description {
+  margin: 5px 0;
+  color: #555;
+}
+
+.repo-owner {
+  display: flex;
+  align-items: center;
+}
+
+.owner-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
   margin-right: 10px;
 }
-.list-enter-active,
-.list-leave-active {
-  transition: all 1s;
-}
-.list-enter, .list-leave-to /* .list-leave-active до версии 2.1.8 */ {
-  opacity: 0;
-  transform: translateY(30px);
+
+.owner-name {
+  color: #007bff;
+  text-decoration: none;
 }
 
-button {
-  margin-top: 20px;
+.owner-name:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btnPrimary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.btnDisabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 </style>

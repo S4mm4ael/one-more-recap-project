@@ -28,7 +28,7 @@
             <div class="error" v-if="error && !loading">
               <p>{{ error }}</p>
             </div>
-            <repo v-if="!loading && !error" :repos="repos" />
+            <repo v-if="!loading && !error && repos" :repos="repos" />
           </div>
         </div>
       </div>
@@ -51,11 +51,12 @@ export default {
       searchInput: "",
       loading: false,
       error: null,
+      showCount: 5,
     };
   },
   computed: {
     repos() {
-      return this.$store.getters.getRepos;
+      return this.$store.getters.getRepos.data?.items.slice(0, this.showCount);
     },
     searchDisabled() {
       return this.searchInput.length <= 3;
@@ -99,7 +100,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90vh;
 }
 
 .repo__wrapper {

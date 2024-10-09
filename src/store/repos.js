@@ -6,10 +6,10 @@ export default {
   },
   mutations: {
     setRepos(state, payload) {
-      state.messages = payload;
+      state.repos = payload;
     },
     loadRepos(state, payload) {
-      state.messagesMain = [...state.messagesMain, ...payload];
+      state.repos = [...state.messagesMain, ...payload];
     },
   },
   actions: {
@@ -18,13 +18,12 @@ export default {
       commit("setRepos", payload);
     },
     loadRepos({commit, getters}) {
-      let res = getters.getMessageFilter;
+      let res = getters.loadRepos;
       commit("loadRepos", loadMore(res));
     },
   },
   getters: {
     getRepos(state) {
-      console.log("state.repos", state.repos);
       return state.repos;
     },
   },
