@@ -56,7 +56,7 @@ export default {
   },
   computed: {
     repos() {
-      return this.$store.getters.getRepos.data?.items.slice(0, this.showCount);
+      return this.$store.getters.getRepos;
     },
     searchDisabled() {
       return this.searchInput.length <= 3;
@@ -81,7 +81,7 @@ export default {
       this.error = null;
       try {
         const response = await apiService.getRepositories(this.searchInput);
-        this.$store.dispatch("setRepos", response);
+        this.$store.dispatch("setRepos", response.data?.items);
       } catch {
         (error) => {
           console.log(error);
