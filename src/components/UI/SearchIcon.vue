@@ -23,3 +23,15 @@ export default {
   name: "SearchIcon",
 };
 </script>
+
+<style scoped>
+.search-icon {
+  height: 32px;
+  width: 32px;
+  padding-left: 16px;
+  padding-right: 16px;
+  align-items: center;
+  position: relative;
+  top: 43px;
+}
+</style>

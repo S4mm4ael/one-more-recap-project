@@ -44,14 +44,6 @@ svg {
   display: flex;
 }
 
-.search-icon {
-  height: 32px;
-  padding-left: 16px;
-  padding-right: 16px;
-  align-items: center;
-  position: relative;
-  top: 43px;
-}
 input {
   padding: 16px 16px 16px 56px !important;
   margin-bottom: 0px;

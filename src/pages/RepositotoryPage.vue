@@ -9,8 +9,8 @@
           </div>
           <div class="repo__content">
             <SearchComponent
-              :value="search"
-              @search="search = $event"
+              :value="searchInput"
+              @search="handleSearch"
               placeholder="Search repository"
             />
             <preloader v-if="loading" :width="90" :height="90" />
@@ -37,6 +37,7 @@ export default {
   components: {repo, preloader, SearchComponent, ReloadIcon},
   data() {
     return {
+      searchInput: "",
       loading: false,
       error: null,
     };
@@ -50,6 +51,10 @@ export default {
     },
   },
   methods: {
+    handleSearch(val) {
+      console.log(val);
+      this.searchInput = val;
+    },
     getrepoLazy() {
       this.loading = true;
       setTimeout(() => {
