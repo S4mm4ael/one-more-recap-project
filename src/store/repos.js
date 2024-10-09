@@ -14,6 +14,7 @@ export default {
   },
   actions: {
     setRepos({commit}, payload) {
+      console.log("payload", payload);
       commit("setRepos", payload);
     },
     loadRepos({commit, getters}) {
@@ -23,6 +24,7 @@ export default {
   },
   getters: {
     getRepos(state) {
+      console.log("state.repos", state.repos);
       return state.repos;
     },
   },

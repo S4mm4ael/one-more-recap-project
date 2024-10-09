@@ -13,6 +13,7 @@
                 :value="searchInput"
                 @search="handleSearch"
                 placeholder="Search repository"
+                @keyup.enter.native="getRepo"
               />
               <button
                 class="btn btnPrimary"
@@ -71,12 +72,15 @@ export default {
       }, 1800);
     },
     async getRepo() {
+      if (this.searchDisabled) {
+        return;
+      }
       console.log(this.searchInput);
       this.loading = true;
       this.error = null;
       try {
         const response = await apiService.getRepositories(this.searchInput);
-        this.$store.dispatch("setRepos", response.data.items);
+        this.$store.dispatch("setRepos", response);
       } catch {
         (error) => {
           console.log(error);

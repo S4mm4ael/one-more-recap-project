@@ -1,9 +1,9 @@
 <template>
   <table>
     <transition-group name="list" tag="tbody">
-      <tr v-for="repo in repos" :key="repo.title">
+      <tr v-for="repo in repos" :key="repo.id">
         <td>
-          <span>{{ repo.title }}</span>
+          <span>{{ repo.full_name }}</span>
         </td>
       </tr>
     </transition-group>
