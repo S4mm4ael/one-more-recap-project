@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 // Pages
 import HomePage from "@/pages/HomePage";
 import NotFound from "@/pages/404Page";
-import NotifyPage from "@/pages/NotifyPage";
+import RepositoryPage from "@/pages/RepositotoryPage.vue";
 
 const routes = [
   {
@@ -16,9 +16,9 @@ const routes = [
     component: HomePage,
   },
   {
-    path: "/notify",
-    name: "notify",
-    component: NotifyPage,
+    path: "/repo",
+    name: "Repository Search",
+    component: RepositoryPage,
   },
   {
     path: "*",
