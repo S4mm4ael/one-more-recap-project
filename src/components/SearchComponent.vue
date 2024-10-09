@@ -1,9 +1,7 @@
 <template>
   <div class="wrapper__search">
-    <SearchIcon />
-    <div class="search">
-      <input type="text" :placeholder="placeholder" v-model="search" />
-    </div>
+    <div class="wrapper__icon"><SearchIcon /></div>
+    <input type="text" :placeholder="placeholder" v-model="search" />
   </div>
 </template>
 
@@ -40,17 +38,21 @@ svg {
   color: #e4e4e4;
 }
 
-.search {
-  display: flex;
-}
-
 input {
   padding: 16px 16px 16px 56px !important;
-  margin-bottom: 0px;
   border-radius: 30px;
   color: #909399;
   font-size: 16px;
-  min-width: 400px;
-  height: auto;
+  min-width: 300px;
+}
+.wrapper__search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper__icon {
+  position: relative;
+  left: 25px;
+  bottom: 40px;
 }
 </style>

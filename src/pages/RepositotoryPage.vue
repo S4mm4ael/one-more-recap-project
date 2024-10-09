@@ -8,11 +8,16 @@
             <ReloadIcon :getRepoLazy="getRepoLazy" />
           </div>
           <div class="repo__content">
-            <SearchComponent
-              :value="searchInput"
-              @search="handleSearch"
-              placeholder="Search repository"
-            />
+            <div class="repo_searchBar">
+              <SearchComponent
+                :value="searchInput"
+                @search="handleSearch"
+                placeholder="Search repository"
+              />
+              <button class="btn btnPrimary" @click="getRepoLazy">
+                Search
+              </button>
+            </div>
             <preloader v-if="loading" :width="90" :height="90" />
             <div class="error" v-if="error">
               <p>{{ error }}</p>
@@ -118,7 +123,12 @@ export default {
     font-size: 24px;
   }
 }
-
+.repo_searchBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 50%;
+}
 .error {
   color: red;
   font-size: 18px;
