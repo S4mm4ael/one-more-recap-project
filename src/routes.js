@@ -16,7 +16,7 @@ const routes = [
     component: HomePage,
   },
   {
-    path: "/notify",
+    path: "/repo",
     name: "Repository Search",
     component: RepositoryPage,
   },

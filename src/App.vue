@@ -29,7 +29,7 @@ export default {
     return {
       links: [
         {title: "Home", url: "/"},
-        {title: "Repositories", url: "/notify"},
+        {title: "Repositories", url: "/repo"},
       ],
     };
   },
