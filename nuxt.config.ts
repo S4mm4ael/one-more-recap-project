@@ -10,4 +10,5 @@ export default defineNuxtConfig({
       },
     },
   },
+  plugins: ["~/plugins/app-components.js"],
 });
