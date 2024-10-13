@@ -11,5 +11,5 @@ export default defineNuxtConfig({
     },
   },
   plugins: ["~/plugins/app-components.js"],
-  css: ["~/assets/css/main.scss"],
+  css: ["~/assets/scss/main.scss"],
 });
