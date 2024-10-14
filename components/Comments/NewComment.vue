@@ -16,9 +16,6 @@
 </template>
 
 <script>
-import AppInput from "~/components/UI/Controls/Input.vue";
-import AppTextArea from "~/components/UI/Controls/TextArea.vue";
-import AppButton from "~/components/UI/Controls/Button.vue";
 import Message from "~/components/UI/Message.vue";
 
 export default {
