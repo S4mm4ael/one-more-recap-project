@@ -11,9 +11,6 @@ importers:
       nuxt:
         specifier: ^3.13.0
         version: 3.13.2(@parcel/watcher@2.4.1)(@types/node@22.7.5)(encoding@0.1.13)(ioredis@5.4.1)(magicast@0.3.5)(meow@9.0.0)(rollup@4.24.0)(sass-embedded@1.79.4)(sass@1.79.5)(terser@5.34.1)(vite@5.4.8(@types/node@22.7.5)(sass-embedded@1.79.4)(sass@1.79.5)(terser@5.34.1))
-      sass:
-        specifier: ^1.79.5
-        version: 1.79.5
       sass-loader:
         specifier: ^16.0.2
         version: 16.0.2(node-sass@9.0.0)(sass-embedded@1.79.4)(sass@1.79.5)
@@ -24,6 +21,9 @@ importers:
         specifier: latest
         version: 4.4.5(vue@3.5.11)
     devDependencies:
+      sass:
+        specifier: ^1.79.5
+        version: 1.79.5
       sass-embedded:
         specifier: ^1.79.4
         version: 1.79.4
