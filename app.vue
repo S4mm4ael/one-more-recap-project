@@ -1,14 +1,11 @@
 <template>
   <div>
-    <DefaultLayout />
+    <NuxtLayout />
   </div>
 </template>
 
 <script>
-import DefaultLayout from "~/layouts/default.vue";
 export default {
-  components: {
-    DefaultLayout,
-  },
+  name: "App",
 };
 </script>
