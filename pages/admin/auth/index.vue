@@ -4,9 +4,11 @@
       <form @submit.prevent="onSubmit" class="auth__form">
         <AppInput type="email" v-model="user.email"> Login: </AppInput>
         <AppInput type="password" v-model="user.password"> Password: </AppInput>
+
         <div class="controls">
           <AppButton> Login! </AppButton>
         </div>
+
       </form>
     </div>
   </section>
@@ -14,23 +16,24 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       user: {
-        email: "",
-        password: "",
-      },
-    };
+        email: '',
+        password: ''
+      }
+    }
   },
   methods: {
-    onSubmit() {
+    onSubmit () {
       // Reset
-      this.user.email = "";
-      this.user.password = "";
-    },
-  },
-};
+      this.user.email = ''
+      this.user.password = ''
+    }
+  }
+}
 </script>
+
 
 <style lang="scss">
 .auth {
