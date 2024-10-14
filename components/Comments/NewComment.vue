@@ -1,17 +1,12 @@
 <template>
   <section class="new-comment">
     <div class="container">
-      <h2 class="title"> New Comment: </h2>
-
-      <!-- message -->
+      <h2 class="title">New Comment:</h2>
       <Message v-if="message" :message="message" />
 
       <form @submit.prevent="onSubmit" class="contact-form">
-        <!-- name -->
         <AppInput v-model="comment.name"> Name: </AppInput>
-        <!-- text -->
         <AppTextArea v-model="comment.text"> Text: </AppTextArea>
-        <!-- buttons -->
         <div class="controls">
           <AppButton> Submit! </AppButton>
         </div>
@@ -21,25 +16,35 @@
 </template>
 
 <script>
+import AppInput from "~/components/UI/Controls/Input.vue";
+import AppTextArea from "~/components/UI/Controls/TextArea.vue";
+import AppButton from "~/components/UI/Controls/Button.vue";
+import Message from "~/components/UI/Message.vue";
+
 export default {
-  data () {
+  components: {
+    AppInput,
+    AppTextArea,
+    AppButton,
+    Message,
+  },
+  data() {
     return {
       message: null,
       comment: {
-        name: '',
-        text: ''
-      }
-    }
+        name: "",
+        text: "",
+      },
+    };
   },
   methods: {
-    onSubmit () {
-      this.message = "Submited!"
-      // Reset
-      this.comment.name = ''
-      this.comment.text = ''
-    }
-  }
-}
+    onSubmit() {
+      this.message = "Submited!";
+      this.comment.name = "";
+      this.comment.text = "";
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -54,4 +59,3 @@ export default {
   }
 }
 </style>
-

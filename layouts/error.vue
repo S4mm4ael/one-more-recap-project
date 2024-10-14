@@ -1,12 +1,14 @@
 <template>
-  <section class="not-found">
-    <div class="container">
-      <div class="not-found__wrapper">
-        <p class="title">Page Not Found</p>
-        <nuxt-link to="/"> Back to main page </nuxt-link>
+  <NuxtLayout
+    ><section class="not-found">
+      <div class="container">
+        <div class="not-found__wrapper">
+          <p class="title">Page Not Found</p>
+          <nuxt-link to="/"> Back to main page </nuxt-link>
+        </div>
       </div>
-    </div>
-  </section>
+    </section></NuxtLayout
+  >
 </template>
 
 <style lang="scss">
