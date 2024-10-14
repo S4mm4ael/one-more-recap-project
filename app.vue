@@ -1,14 +1,14 @@
 <template>
   <div>
-    <Header />
+    <DefaultLayout />
   </div>
 </template>
 
 <script>
-import Header from "~/components/system/Header.vue";
+import DefaultLayout from "~/layouts/default.vue";
 export default {
   components: {
-    Header,
+    DefaultLayout,
   },
 };
 </script>

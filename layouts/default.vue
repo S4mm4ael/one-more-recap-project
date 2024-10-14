@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
     <Header />
-    <nuxt />
+    <NuxtPage />
   </div>
 </template>
 
 <script>
-import Header from '~/components/system/Header.vue'
+import Header from "~/components/system/Header.vue";
 export default {
-  components: { Header }
-}
+  components: {Header},
+};
 </script>
