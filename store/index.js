@@ -16,6 +16,7 @@ export const actions = {
     commit("setPosts", response.data);
   },
   async addPost({commit}, post) {
+    console.log(post);
     const response = await axios.post("http://localhost:3000/posts", post);
     commit("setPosts", response.data);
   },

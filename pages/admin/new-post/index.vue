@@ -3,15 +3,16 @@
 </template>
 
 <script>
-import newPostFrom from '@/components/Admin/NewPostFrom.vue'
+import newPostFrom from "@/components/Admin/NewPostFrom.vue";
 export default {
-  components: { newPostFrom },
-  layout: 'admin',
+  components: {newPostFrom},
+  layout: "admin",
   methods: {
-    onSubmit (post) {
-      console.log('Post added!')
-      console.log(post)
-    }
-  }
-}
+    onSubmit(post) {
+      this.$store.dispatch("posts/createPost", post).then(() => {
+        this.$router.push("/admin");
+      });
+    },
+  },
+};
 </script>
