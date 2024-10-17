@@ -25,9 +25,9 @@ export default {
   data() {
     return {
       links: [
-        {title: "Blog", url: "/blog"},
+        {title: "Home", url: "/"},
         {title: "About", url: "/about"},
-        {title: "Admin page", url: "/admin"},
+        {title: "Admin", url: "/admin"},
       ],
     };
   },

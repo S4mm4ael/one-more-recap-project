@@ -18,8 +18,10 @@
 
 <script>
 import Header from "~/components/system/Header.vue";
+import Intro from "~/components/UI/Intro.vue";
 export default {
-  components: {Header},
+  name: "AdminLayout",
+  components: {Header, Intro},
   middleware: ["auth"],
 };
 </script>
