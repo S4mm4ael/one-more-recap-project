@@ -1,29 +1,51 @@
-import axios from "axios";
+import Vue from "vue";
 
-export const state = () => ({
-  posts: [],
+// export default new Vuex.Store({
+//   state: {
+//     posts: [],
+//   },
+//   mutations: {
+//     SET_POSTS(state, posts) {
+//       state.posts = posts;
+//     },
+//     ADD_POST(state, post) {
+//       state.posts.push(post);
+//     },
+//   },
+//   actions: {
+//     async fetchPosts({commit}) {
+//       try {
+//         const response = await axios.get("https://api.example.com/posts");
+//         commit("SET_POSTS", response.data);
+//       } catch (error) {
+//         console.error("Error fetching posts:", error);
+//       }
+//     },
+//     async addPost({commit}, post) {
+//       try {
+//         const response = await axios.post(
+//           "https://api.example.com/posts",
+//           post
+//         );
+//         commit("ADD_POST", response.data);
+//       } catch (error) {
+//         console.error("Error adding post:", error);
+//       }
+//     },
+//   },
+// });
+
+const store = createStore({
+  state() {
+    return {
+      count: 0,
+    };
+  },
+  mutations: {
+    increment(state) {
+      state.count++;
+    },
+  },
 });
 
-export const mutations = {
-  setPosts(state, posts) {
-    state.posts = posts;
-  },
-};
-
-export const actions = {
-  async fetchPosts({commit}) {
-    const response = await axios.get("http://localhost:3000/posts");
-    commit("setPosts", response.data);
-  },
-  async addPost({commit}, post) {
-    console.log(post);
-    const response = await axios.post("http://localhost:3000/posts", post);
-    commit("setPosts", response.data);
-  },
-};
-
-export const getters = {
-  allPosts(state) {
-    return state.posts;
-  },
-};
+Vue.use(store);

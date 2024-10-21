@@ -8,10 +8,9 @@ export default {
   components: {newPostFrom},
   layout: "admin",
   methods: {
-    onSubmit(post) {
-      this.$store.dispatch("posts/createPost", post).then(() => {
-        this.$router.push("/admin");
-      });
+    onSubmit() {
+      this.$store.commit("increment");
+      console.log(this.$store.state.count);
     },
   },
 };

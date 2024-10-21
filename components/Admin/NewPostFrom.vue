@@ -17,37 +17,51 @@
 </template>
 
 <script>
+import AppInput from "@/components/UI/controls/Input";
+import AppTextArea from "@/components/UI/controls/TextArea";
+import AppButton from "@/components/UI/controls/Button";
+
 export default {
+  components: {
+    AppInput,
+    AppTextArea,
+    AppButton,
+  },
   props: {
     postEdit: {
       type: Object,
-      requreid: false
-    }
+      requreid: false,
+    },
   },
-  data () {
+  data() {
     return {
-      post: this.postEdit ? { ...this.postEdit } : {
-        title: '',
-        descr: '',
-        img: '',
-        content: ''
-      }
-    }
+      post: this.postEdit
+        ? {...this.postEdit}
+        : {
+            title: "",
+            descr: "",
+            img: "",
+            content: "",
+          },
+    };
   },
   methods: {
-    onSubmit () {
-      this.$emit('submit', this.post)
+    onSubmit() {
+      this.$emit("submit", this.post);
     },
-    cancel () {
-      this.$router.push('/admin/')
-    }
-  }
-}
+    cancel() {
+      this.$router.push("/admin/");
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .controls {
   text-align: center;
   margin: 20px 0;
+}
+.new-post {
+  margin-top: 50px;
 }
 </style>
